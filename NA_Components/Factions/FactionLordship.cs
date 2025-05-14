@@ -18,6 +18,11 @@ namespace NA_Components.Factions
         public List<Location> Bases { get; set; } = [];
         public Faction FactionREF { get; set; }
         public string Name { get; set; }
+        
+        public int Ressource_Gold { get; set; }
+        public int Ressource_Supplies { get; set; }
+        public int Ressource_Iron { get; set; }
+        public int Ressource_Lumber { get; set; }
 
         public FactionLordship(Faction f, NPCCharacter head)
         {
@@ -54,15 +59,22 @@ namespace NA_Components.Factions
         public virtual void AddRetainer(NPCCharacter retainer)
         {
             Retainers.Add(retainer);
-            retainer.SwitchLordship(FactionREF, this);
+            retainer.FactionLordshipREF = this;
             retainer.ChangeLocation(Head.CurrentLocationREF);
         }
 
-        public virtual void RemoveRetainer(NPCCharacter retainer)
+        public virtual void TransferRetainerToMainLordship(NPCCharacter retainer)
         {
             Retainers.Remove(retainer);
-            retainer.SwitchLordship(FactionREF, this.FactionREF.RulingLordship);
-            retainer.ChangeLocation(this.FactionREF.Ruler.CurrentLocationREF);
+            retainer.FactionLordshipREF = this.FactionREF.RulingLordship;
+            retainer.ChangeLocation(this.FactionREF.RulingLordship.Head.CurrentLocationREF);
+        }
+
+        public virtual void TransferRetainerToLordship(NPCCharacter character, FactionLordship newLordship)
+        {
+            Retainers.Remove(character);
+            character.FactionLordshipREF = newLordship;
+            character.CurrentLocationREF = newLordship.Head.CurrentLocationREF;
         }
 
         public virtual void ChangeRetainerLocation(NPCCharacter retainer, Location l)
@@ -76,11 +88,6 @@ namespace NA_Components.Factions
             {
                 npc.ChangeLocation(l);
             }
-        }
-
-        public virtual void CreateArmy(NPCCharacter leader, NPCCharacter adjutant1, NPCCharacter adjutant2)
-        {
-
         }
 
         public virtual void AssignTask(NPCCharacter retainer, NPCCharacterTask task)

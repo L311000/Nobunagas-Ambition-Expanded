@@ -1,4 +1,5 @@
 ﻿using NA_Components;
+using NA_Components.Characters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,8 @@ namespace NA_Components.Map
         public int Base_Barbican_Level { get; set; }
         public int Base_Annex_Level { get; set; }
         public int Base_Tower_Level { get; set; }
+
+        public NPCCharacter Lord { get; set; }
+        public NPCCharacter Chamberlein { get; set; }
     }
 }

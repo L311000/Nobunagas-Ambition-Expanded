@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="NA_Editor.Modules.ucMonEdit"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NA_Editor.Modules"
+             mc:Ignorable="d" 
+             d:DesignHeight="1011" d:DesignWidth="1388">
+    <Grid>
+        <Image Name="Image_Emblem" HorizontalAlignment="Left" MinHeight="550" Height="550" Margin="443,259,0,0" VerticalAlignment="Top" MinWidth="550" Width="550"/>
+        <Button Name="Button_AddImage" FontSize="30" Content="Add image" HorizontalAlignment="Left" Margin="443,818,0,0" VerticalAlignment="Top" MinWidth="292" Width="292" MinHeight="44" Height="44" Click="Button_AddImage_Click"/>
+        <Label Name="Label_Filename" Content="File" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" MinWidth="391" MinHeight="57"/>
+        <Label x:Name="Label_Filepath" Content="Path" FontSize="25"  HorizontalAlignment="Left" Margin="10,355,0,0" VerticalAlignment="Top" MinWidth="391" MinHeight="181"/>
+
+    </Grid>
+</UserControl>

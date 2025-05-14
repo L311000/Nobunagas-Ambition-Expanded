@@ -23,7 +23,12 @@ namespace NA_Components
 
     public enum CharacterSocietyStatus
     {
-        Retainer, Lord, Daimyo, Shogun, Emperor
+        Retainer, Chamberlein, Lord, Daimyo
+    }
+
+    public enum SpecialSocietyStatus
+    {
+        Shogun, Emperor
     }
 
     public enum FactionStatus

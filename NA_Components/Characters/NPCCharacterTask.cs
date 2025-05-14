@@ -15,7 +15,8 @@ namespace NA_Components.Characters
         public NPCCharacter Assigned { get; set; }
         public Location Location { get; set; }
         public int Progress { get; set; } = 0;
-        public int DurationDays {  get; set; }
+        public int DurationDays { get; set; }
+        public int DailyProgress { get; set; }
 
         public virtual void CheckTask()
         {
@@ -30,6 +31,18 @@ namespace NA_Components.Characters
         public virtual void ApplyCompleteEffect()
         {
 
+        }
+
+        public virtual void AddProgress(int amount)
+        {
+            Progress += amount;
+            CheckTask();
+        }
+
+        public virtual void AddDailyProgress()
+        {
+            Progress += DailyProgress;
+            CheckTask();
         }
     }
 }

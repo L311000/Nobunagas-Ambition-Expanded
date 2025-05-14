@@ -1,13 +1,13 @@
 ﻿using NA_Components;
 using NA_Components.Factions;
 using NA_Components.Map;
-using NA_Components.Characters;
 using NA_Components.Localisations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NA_Components.Graphical;
 
 namespace NA_Components.Characters
 {
@@ -52,9 +52,11 @@ namespace NA_Components.Characters
         public Faction FactionREF { get; set; }
         public FactionLordship FactionLordshipREF { get; set; }
         public Location CurrentLocationREF { get; set; }
+        public Mon Emblem { get; set; }
 
         public int PowerScore { get => CalculatePowerScore(); }
 
+        #region Checks and Getters
         private int GetAge()
         {
             if (IsALive())
@@ -65,6 +67,7 @@ namespace NA_Components.Characters
             {
                 return DateDeceased.Year - DateBorn.Year;
             }
+
         }
 
         public virtual bool IsBorn()
@@ -78,7 +81,7 @@ namespace NA_Components.Characters
 
         private bool Check_AvailableForLocationTask()
         {
-            if (this.CharacterTask != CharacterTaskTypes.Leading_army && this.CharacterTask != CharacterTaskTypes.Returning && this.CharacterTask != CharacterTaskTypes.Part_Of_Army)
+            if (this.CharacterTask != CharacterTaskTypes.Leading_army && this.CharacterTask != CharacterTaskTypes.Part_Of_Army)
             {
                 return true;
             }
@@ -120,19 +123,14 @@ namespace NA_Components.Characters
             return false;
         }
 
-        public virtual bool HasChildrenAliveSameClan()
+        public virtual List<NPCCharacter> GetChildrenNotAdult()
         {
-            if (HasChildren())
+            if (Children != null)
             {
-                foreach (var child in Children)
-                {
-                    if (child.IsALive() && child.FactionREF == this.FactionREF)
-                    {
-                        return true;
-                    }
-                }
+                var children = Children.Where(x => x.Age < 17).ToList();
+                return children;
             }
-            return false;
+            return null;
         }
 
         public virtual bool IsAdult()
@@ -168,15 +166,15 @@ namespace NA_Components.Characters
             return score;
         }
 
-        public virtual void SwitchLordship(Faction f, FactionLordship fl)
-        {
-            this.FactionREF = f;
-            this.FactionLordshipREF = fl;
-        }
+        #endregion
+
+        #region Character Actions
 
         public virtual void ChangeLocation(Location l)
         {
             this.CurrentLocationREF = l;
         }
+
+        #endregion
     }
 }

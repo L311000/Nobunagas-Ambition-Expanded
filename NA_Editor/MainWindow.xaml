@@ -1,0 +1,25 @@
+﻿<Window x:Class="NA_Editor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NA_Editor"
+        mc:Ignorable="d"
+        Title="MainWindow" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize"
+        MinWidth="1920" MinHeight="1080">
+    <Grid Name="GridMain" Margin="0,130,1400,0">
+        <Menu Name="Menu_Main" MinHeight="950" MinWidth="520"/>
+        <Label Name="Label_EditorName" Content="Name" FontSize="70"
+               HorizontalAlignment="Center" HorizontalContentAlignment="Center" Margin="0,-129,0,0" 
+               VerticalAlignment="Top" VerticalContentAlignment="Center" MinWidth="520" MinHeight="129"/>
+        <TabControl Name="TabControl_Modules" Margin="525,-129,-1399,0">
+            <TabItem Header="TabItem" Height="60">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="TabItem" Height="60">
+                <Grid Background="#FFE5E5E5" Margin="7,11,-7,-11"/>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

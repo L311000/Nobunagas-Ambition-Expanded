@@ -10,10 +10,8 @@ namespace NA_Components.Characters
 {
     public class Dynasty : NA_Base
     {
-        public Localisation Name { get; set; }
-        public long Prestige { get; set; }
+        public string Name { get; set; }
         public FamilySocietyStatus Status { get; set; }
         public List<NPCCharacter> Members { get; set; }
-        public Mon Emblem { get; set; }
     }
 }
